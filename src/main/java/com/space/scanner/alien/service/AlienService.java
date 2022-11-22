@@ -40,7 +40,11 @@ public class AlienService {
         return alienRepository.findById(id).get();
     }
 
-    public Alien updateAlien(String id, Alien alien) {
+    public Alien updateAlien(String id, Alien newAlien) {
+        Alien alien = alienRepository.findById(id).get();
+        alien.setName(newAlien.getName());
+        alien.setRace(newAlien.getRace());
+        alien.setPlanet(newAlien.getPlanet());
         return alienRepository.save(alien);
     }
 
